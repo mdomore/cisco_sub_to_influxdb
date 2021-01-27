@@ -1,53 +1,4 @@
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
-<!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <a href="https://github.com/mdomore/cisco_sub_to_influxdb">
-    <!--<img src="images/logo.png" alt="Logo" width="80" height="80">-->
-  </a>
-
-  <h3 align="center">Cisco Sub to influxdb</h3>
-
-  <p align="center">
-    project_description
-    <br />
-    <a href="https://github.com/mdomore/cisco_sub_to_influxdb"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/mdomore/cisco_sub_to_influxdb">View Demo</a>
-    ·
-    <a href="https://github.com/mdomore/cisco_sub_to_influxdb/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/mdomore/cisco_sub_to_influxdb/issues">Request Feature</a>
-  </p>
-</p>
-
-
+<h3 align="center">Cisco Sub to influxdb</h3>
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -55,9 +6,6 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
@@ -100,12 +48,63 @@ Here's a blank template to get started:
 
 To get a local copy up and running follow these simple steps.
 
+1. Create a config.json file, with this tempalte.
+    ```sh
+    {
+        "snmp": {
+            "community": "public",
+            "version": "2"
+            },
+            "hosts": {
+                "lns1": {
+                    "ip": "lns1.foo.com",
+                    "nb_sub": 0
+                }
+            },
+            "influx": {
+                "host": "influxdb.foo.com",
+                "port": 8086,
+                "type": {
+                    "type_1": {
+                        "nb_sub": 0,
+                        "domain": "foo.com",
+                        "vlan": 100,
+                        "novlan": 0
+                        },
+                    "type_2": {
+                        "nb_sub": 0,
+                        "domain": "bar.com",
+                        "vlan": 200,
+                        "novlan": 0
+                        },
+                    "type_3": {
+                        "nb_sub": 0,
+                        "domain": "bar.com",
+                        "vlan": 0,
+                        "novlan": "300,200"
+                        }
+                    }
+                }
+        }
+    ```
+You can match user by vlan (if you use s-vlan on your ENNI) or you can match by realm (domain).
+If two users use the same realm but on different vlan you can filter the vlan with the no vlan attribut.
+For example : 
+
+user1@bar.com || vlan 200 : will be count on type_2
+If you don't want to count on type_3 too you need to add 200 to novlan.
+
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+* netsnmp
   ```sh
-  npm install npm@latest -g
+  pip install netsnmp
+  ```
+
+* netsnmp
+  ```sh
+  pip install json
   ```
 
 ### Installation
@@ -118,10 +117,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
+Just lunch the main.py script.
 
 
 <!-- ROADMAP -->
@@ -155,17 +151,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact
 
 Project Link: [https://github.com/mdomore/cisco_sub_to_influxdb](https://github.com/mdomore/cisco_sub_to_influxdb)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
-
-
 
 
 
