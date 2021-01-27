@@ -19,7 +19,6 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -28,20 +27,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+This is just a script that get subscribers informations from Cisco ASR router via snmp, make some calculation and put the result in influxdb.
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`mdomore`, `cisco_sub_to_influxdb`, `twitter_handle`, `email`, `Cisco Sub to influxdb`, `project_description`
-
-
-### Built With
-
-* []()
-* []()
-* []()
-
-
+This is a good way to monitor your subscribers.
 
 <!-- GETTING STARTED -->
 ## Getting Started
