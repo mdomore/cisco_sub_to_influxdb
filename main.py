@@ -36,7 +36,7 @@ def get_total_subs():
         session.UseLongNames = 1
         sub_number = session.walk(vars_list)
         if sub_number:
-            data['hosts'][h]['nb_sub'] = int(sub_number[0].decode("utf-8"))
+            data['hosts'][h]['nb_sub'] = int(sub_number[0])
         else:
             data['hosts'][h]['nb_sub'] = 0
 
@@ -70,9 +70,9 @@ def get_detailed_subs():
         for i in range(data['hosts'][h]['nb_sub']):
             reply = session.getnext(vars_list)
             result.append(
-                {'vlan': (int(reply[0].decode("utf-8").split('/')[-1].split('.')[0])),
-                 'domain': (reply[1].decode("utf-8").split('.', 1)[1]),
-                 'user': (reply[2].decode("utf-8"))}
+                {'vlan': (int(reply[0].split('/')[-1].split('.')[0])),
+                 'domain': (reply[1].split('.', 1)[1]),
+                 'user': (reply[2])}
             )
 
 
@@ -137,4 +137,5 @@ if __name__ == "__main__":
     get_detailed_subs()
     count_subs_by_type()
     write_totals_to_influxdb()
+    print(data)
     write_subs_to_influxdb()
