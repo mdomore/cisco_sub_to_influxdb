@@ -14,8 +14,10 @@ OID_23 = '.1.3.6.1.4.1.9.9.786.1.1.1.1.23'
 OID_24 = '.1.3.6.1.4.1.9.9.786.1.1.1.1.24'
 
 client = InfluxDBClient(host=data['influx']['host'], port=data['influx']['port'])
-client.create_database('ciscoDetailSub')
-client.switch_database('ciscoDetailSub')
+#client.create_database('ciscoDetailSub')
+#client.switch_database('ciscoDetailSub')
+client.create_database('detailSub')
+client.switch_database('detailSub')
 
 
 def get_total_subs():
@@ -120,7 +122,7 @@ def write_subs_to_influxdb():
     for t in data['influx']['type']:
         json_body = [
             {
-                "measurement": "subscribers",
+                "measurement": "Subscribers",
                 "tags": {
                     "type": t
                 },
